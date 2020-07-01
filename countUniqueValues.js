@@ -1,20 +1,3 @@
-// function countUniqueValues(arr) {
-//   if (!arr.length) return 0;
-
-//   let total = 1;
-//   let pointer1 = 0;
-//   let pointer2 = 1;
-
-//   while(pointer2 < arr.length) {
-//     if(arr[pointer1] !== arr[pointer2]) {
-//       total++;
-//       pointer1 = pointer2;
-//     }
-//     pointer2++;
-//   }
-//   return total;
-// }
-
 function countUniqueValues(arr) {
   if (!arr.length) return 0;
 
