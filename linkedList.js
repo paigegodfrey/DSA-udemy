@@ -14,18 +14,19 @@ class LinkedList {
 
   push(val) {
     let newNode = new Node(val);
-    if (this.head === null) this.head = newNode;
-    // must use else condition or empty an empty LinkedList will meet both conditions
-    else if (this.head !== null) this.tail.next = newNode; // so we don't lose prior this.tail value
+
+    if (!this.length) this.head = newNode;
+    else this.tail.next = newNode;
+
     this.tail = newNode;
     this.length++;
   }
 
   pop() {
-    if (this.length === 0) return;
+    if (!this.length) return;
 
     let curr = this.head;
-    let newTail = curr;
+    let prev;
 
     if (this.length === 1) {
       this.head = null;
@@ -33,26 +34,26 @@ class LinkedList {
     }
 
     if (this.length > 1) {
-      // traverse until we reach the node before the tail
       while (curr.next !== null) {
-        newTail = curr; // capture the value of the node before the tail
-        curr = curr.next; // on final iteration curr === this.tail
+        prev = curr;
+        curr = curr.next;
       }
-      this.tail = newTail;
-      this.tail.next = null;
+      prev.next = null;
+      this.tail = prev;
     }
     this.length--;
     return curr;
   }
 
-  shift() {
-    if (this.length === 0) return;
+
+  shiftCheck() {
+    if (!this.length) return;
 
     let originalHead = this.head;
 
     if (this.length === 1) this.tail = null;
-    if (this.length >= 1) this.head = originalHead.next;
 
+    this.head = originalHead.next;
     this.length--;
     return originalHead;
   }
@@ -61,13 +62,12 @@ class LinkedList {
     let newNode = new Node(val);
 
     if (!this.length) this.tail = newNode;
-    else if (this.length) newNode.next = this.head;
+    else newNode.next = this.head;
 
     this.head = newNode;
-    this.length++
+    this.length++;
   }
-
-
+  
   removeAt(idx) {
     if (idx < 0 || idx >= this.length) throw new Error('Invalid index');
     if (index === 0) return this.shift();
