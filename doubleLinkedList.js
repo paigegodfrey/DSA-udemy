@@ -18,6 +18,7 @@ class DoubleLinkedList {
 
     if (!this.length) this.head = newNode;
     else {
+      // before we override this.tail with newNode
       this.tail.next = newNode;
       newNode.prev = this.tail;
     }

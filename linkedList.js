@@ -20,6 +20,7 @@ class LinkedList {
 
     this.tail = newNode;
     this.length++;
+    return this.length;
   }
 
   pop() {
@@ -46,16 +47,19 @@ class LinkedList {
   }
 
 
-  shiftCheck() {
+  shift() {
     if (!this.length) return;
 
-    let originalHead = this.head;
+    let nodeRemoved = this.head;
 
-    if (this.length === 1) this.tail = null;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    }
 
-    this.head = originalHead.next;
+    else this.head = nodeRemoved.next;
     this.length--;
-    return originalHead;
+    return nodeRemoved;
   }
 
   unshift(val) {
@@ -66,8 +70,9 @@ class LinkedList {
 
     this.head = newNode;
     this.length++;
+    return this.length;
   }
-  
+
   removeAt(idx) {
     if (idx < 0 || idx >= this.length) throw new Error('Invalid index');
     if (index === 0) return this.shift();
