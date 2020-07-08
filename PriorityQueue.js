@@ -5,6 +5,7 @@ class Node {
   }
 }
 
+// where priority 1 is the highest
 class PriorityQueue {
   constructor() {
     this.values = [];
@@ -24,9 +25,9 @@ class PriorityQueue {
       let parentIdx = Math.floor((idx - 1) / 2);
       let parent = this.values[parentIdx];
 
-      if (element.priority <= parent.priority) break;
+      if (element.priority >= parent.priority) break;
 
-      // else if parent > element
+      // else if parent.priority < element.priority
       this.values[idx] = parent;
       this.values[parentIdx] = element;
       idx = parentIdx;
@@ -38,10 +39,10 @@ class PriorityQueue {
     if (!this.values.length) return;
     if (this.values.length === 1) return this.values.pop();
 
-    let max = this.values[0];
+    let highestPriority = this.values[0];
     this.values[0] = this.values.pop();
     this.sinkDown(0);
-    return max;
+    return highestPriority;
   }
 
   sinkDown(idx) {
@@ -50,13 +51,13 @@ class PriorityQueue {
     let parentIdx = idx;
     let length = this.values.length;
 
-    // if left child priority is greater than parent priority
-    if (leftIdx < length && this.heap[leftIdx].priority > this.heap[parentIdx].priority) {
+    // if left child priority is higher (lower number) than parent priority
+    if (leftIdx < length && this.heap[leftIdx].priority < this.heap[parentIdx].priority) {
       parentIdx = leftIdx
     }
-    // if right child priority is greater than parent priority
-    // parent is now updated to reflect max of left and original parent
-    if (rightIdx < length && this.heap[rightIdx].priority > this.heap[parentIdx].priority) {
+    // if right child priority is higher(lower number) than parent priority
+    // parent is now updated to reflect highest priority of left and original parent
+    if (rightIdx < length && this.heap[rightIdx].priority < this.heap[parentIdx].priority) {
       parentIdx = rightIdx
     }
 
