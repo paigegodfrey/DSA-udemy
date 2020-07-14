@@ -99,3 +99,13 @@ class Graph {
     return result;
   }
 }
+
+// to set up graph
+let g = new Graph();
+g.addEdge('A','B');
+g.addEdge('A','C');
+g.addEdge('B','D');
+g.addEdge('C','E');
+g.addEdge('D','E');
+g.addEdge('D','F');
+g.addEdge('E','F');
