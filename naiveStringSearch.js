@@ -1,3 +1,5 @@
+// O(n*m) time
+// O(1) space
 function stringSearch(str, substring) {
   let count = 0;
 
