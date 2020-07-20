@@ -1,5 +1,5 @@
 // largest value bubbles to the top => good if data is mostly sorted
-// O(n^2) time 
+// O(n^2) time || O(n) best
 // O(1) space
 function bubbleSort(arr) {
   let noSwaps;

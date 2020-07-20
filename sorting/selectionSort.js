@@ -1,5 +1,5 @@
 // find min value and move to beginning => good when we want to minimize the amount of swaps
-// O(n^2) time 
+// O(n^2) time ALWAYS
 // O(1) space
 function selectionSort(arr) {
   let lowest;
