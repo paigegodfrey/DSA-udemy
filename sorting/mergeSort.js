@@ -1,6 +1,4 @@
 // helper function
-// O(n + m) time
-// O(n + m) space
 function merge(arr1, arr2) {
   let result = [];
   let i = 0;
@@ -29,8 +27,8 @@ function merge(arr1, arr2) {
   return result;
 }
 
-// O() time
-// O() space
+// O(n log n) time
+// O(n) space
 function mergeSort(arr) {
   if (arr.length <= 1) return arr;
 
@@ -43,14 +41,17 @@ function mergeSort(arr) {
 
 // EXAMPLE
 // mergeSort([10, 24, 76, 73])
+
 // left => mergeSort([10, 24]) => mergeSort([10]) => [10]
 // right => mergeSort([24]) => [24]
 // merge([10], [24]) => [10, 24]
 // => left resolves to [10, 24]
+
 // right => mergeSort([76, 73])
 // left => mergeSort([76]) => [76]
 // right => mergeSort([73]) => [73]
 // merge([76], [73]) => [73, 76]
 // => right resolves to [73, 76]
+
 // merge([10, 24], [73, 76])
 // => final answer [10, 24, 73, 76]
