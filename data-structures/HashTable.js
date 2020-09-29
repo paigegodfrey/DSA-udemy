@@ -8,9 +8,9 @@ class Node {
 
 class LinkedList {
   constructor() {
-    this.length = 0;
     this.head = null;
     this.tail = null;
+    this.length = 0;
   }
 
   push(key, val) {
@@ -34,6 +34,8 @@ class HashTable {
 
   _hash(key) {
     let total = 0;
+    
+    // reduces collisions and creates more uniform distribution
     let WEIRD_PRIME = 31;
 
     for (let i = 0; i < Math.min(key.length, 100); i++) {
