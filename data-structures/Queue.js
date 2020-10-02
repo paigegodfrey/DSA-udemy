@@ -27,7 +27,7 @@ class Queue {
   // works the same as unshift
   remove() {
     if (!this.size) return;
-    
+
     let nodeRemoved = this.first;
 
     if (this.size === 1) {
@@ -40,4 +40,8 @@ class Queue {
     return nodeRemoved;
   }
 
+  peek() {
+    if (!this.size) return;
+    return this.first;
+  }
 }
