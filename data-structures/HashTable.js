@@ -66,9 +66,11 @@ class HashTable {
 
   getKeys() {
     let keys = [];
+    let curr;
+    
     for (let i = 0; i < this.keyMap.length; i++) {
       if (this.keyMap[i]) {
-        let curr = this.keyMap[i].head;
+        curr = this.keyMap[i].head;
         while (curr !== null) {
           keys.push(curr.key);
           curr = curr.next;

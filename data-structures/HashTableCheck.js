@@ -60,4 +60,20 @@ class HashTable {
     // if key does not exist within the LinkedList
     return undefined;
   }
+
+  getKeys() {
+    let keys = [];
+    let current;
+
+    for (let i = 0; i < this.keyMap.length; i++) {
+      if (this.keyMap[i]) {
+        current = this.keyMap[i].head;
+        while (current !== null) {
+          keys.push(current.key);
+          current = current.next;
+        }
+      }
+    }
+    return keys;
+  }
 }
