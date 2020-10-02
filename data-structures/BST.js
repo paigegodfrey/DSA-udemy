@@ -43,6 +43,7 @@ class BST {
     }
   }
 
+  // returns boolean
   find(val) {
     if (!this.root) return false;
 

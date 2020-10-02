@@ -11,7 +11,7 @@ class BST {
     this.root = null;
   }
 
-  // assume no duplicate values
+  // assumes no duplicate values
   insert(val) {
     let newNode = new Node(val);
 
@@ -45,7 +45,7 @@ class BST {
     if (!this.root) return false;
 
     let current = this.root;
-    
+
     while (current) {
       if (current.val === val) return true;
       if (val < current.val) current = current.left;
