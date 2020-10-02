@@ -39,4 +39,22 @@ class BST {
       }
     }
   }
+
+  // returns boolean
+  find(val) {
+    if (!this.root) return false;
+
+    let current = this.root;
+    while (true) {
+      if (current.val === val) return true;
+      if (val < current.val) {
+        if (!current.left) return false;
+        current = current.left;
+      }
+      else if (val > current.val) {
+        if (!current.right) return false;
+        current = current.right;
+      }
+    }
+  }
 }

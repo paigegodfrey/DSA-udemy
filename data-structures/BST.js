@@ -11,8 +11,10 @@ class BST {
     this.root = null;
   }
 
+  // O(log n) time
+  // always attach to the END of the tree
+  // traverse through nodes by comparing val to curr.val
   insert(val) {
-
     let newNode = new Node(val);
     if (this.root === null) {
       this.root = newNode;
@@ -76,9 +78,9 @@ class BST {
 
   // left, node, right
   inOrderTraversal(node = this.root, data = []) {
-    if(node.left) this.inOrderTraversal(node.left, data);
+    if (node.left) this.inOrderTraversal(node.left, data);
     data.push(node);
-    if(node.right) this.inOrderTraversal(node.right, data);
+    if (node.right) this.inOrderTraversal(node.right, data);
     return data;
   }
 
@@ -92,7 +94,7 @@ class BST {
 
   // left, right, node
   postOrderTraversal(node = this.root, data = []) {
-    if(node.left) this.postOrderTraversal(node.left, data);
+    if (node.left) this.postOrderTraversal(node.left, data);
     if (node.right) this.preOrderTraversal(node.right, data);
     data.push(node);
     return data;
