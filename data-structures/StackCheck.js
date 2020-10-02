@@ -9,7 +9,7 @@ class Stack {
   constructor() {
     this.top = null;
     this.bottom = null;
-    this.length = 0;
+    this.size = 0;
   }
 
   // works like unshift
@@ -20,8 +20,30 @@ class Stack {
     else newNode.next = this.top;
 
     this.top = newNode;
-    this.length++;
-    return this.length;
+    this.size++;
+    return this.size;
   }
 
+  // works like shift
+  pop() {
+    if (!this.top) return;
+
+    let nodeRemoved = this.top;
+
+    // if this.size === 1
+    if (this.top.next === null) {
+      this.top = null;
+      this.tail = null;
+    }
+
+    else this.top = nodeRemoved.next
+    this.size--;
+    return nodeRemoved;
+  }
+
+  peek() {
+    if (!this.top) return;
+    return this.top;
+
+  }
 }
