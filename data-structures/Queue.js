@@ -44,4 +44,8 @@ class Queue {
     if (!this.size) return;
     return this.first;
   }
+
+  isEmpty() {
+    return this.first === null;
+  }
 }
