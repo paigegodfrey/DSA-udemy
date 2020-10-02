@@ -22,4 +22,8 @@ class HashTable {
     return total
   }
 
+  set(key, value) {
+    
+  }
+
 }
