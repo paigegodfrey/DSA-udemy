@@ -22,7 +22,22 @@ class Queue {
     this.last = newNode;
     this.size++;
     return this.size;
+  }
 
+  // works the same as unshift
+  remove() {
+    if (!this.size) return;
+    
+    let nodeRemoved = this.first;
+
+    if (this.size === 1) {
+      this.first = null;
+      this.last = null;
+    }
+    else this.first = this.first.next;
+
+    this.size--;
+    return nodeRemoved;
   }
 
 }
