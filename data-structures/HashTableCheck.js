@@ -49,6 +49,15 @@ class HashTable {
   }
 
   get(key) {
-    
+    let idx = this._hash(key);
+    if (!this.keyMap[idx]) return undefined;
+
+    let current = this.keyMap[idx].head;
+    while (current !== null) {
+      if (current.key === key) return current.val;
+      current = current.next;
+    }
+    // if key does not exist within the LinkedList
+    return undefined;
   }
 }

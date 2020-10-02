@@ -55,7 +55,6 @@ class HashTable {
   get(key) {
     let idx = this._hash(key);
     if (!this.keyMap[idx]) throw new Error('key does not exist');
-    if (this.keyMap[idx].length === 1) return this.keyMap[idx].head.val;
 
     let curr = this.keyMap[idx].head;
     while (curr !== null) {
