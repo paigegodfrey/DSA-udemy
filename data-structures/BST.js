@@ -47,7 +47,6 @@ class BST {
     if (!this.root) return false;
 
     let curr = this.root;
-
     while (curr) {
       if (val === curr.val) return true;
       if (val < curr.val) curr = curr.left;

@@ -45,16 +45,12 @@ class BST {
     if (!this.root) return false;
 
     let current = this.root;
-    while (true) {
+    
+    while (current) {
       if (current.val === val) return true;
-      if (val < current.val) {
-        if (!current.left) return false;
-        current = current.left;
-      }
-      else if (val > current.val) {
-        if (!current.right) return false;
-        current = current.right;
-      }
+      if (val < current.val) current = current.left;
+      else if (val > current.val) current = current.right;
     }
+    return false;
   }
 }
