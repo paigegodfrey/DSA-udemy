@@ -13,29 +13,29 @@ class BST {
 
   // assume no duplicate values
   insert(val) {
-    let nodeToInsert = new Node(val);
+    let newNode = new Node(val);
 
     if (!this.root) {
-      this.root = nodeToInsert;
+      this.root = newNode;
       return;
     }
 
     let current = this.root;
 
-    while (current !== null) {
-      if (nodeToInsert > current) {
-        if (current.right) current = current.right;
-        else {
-          current.right = nodeToInsert;
+    while (true) {
+      if (val < current.val) {
+        if (!current.left) {
+          current.right = newNode;
           return;
         }
+        current = current.left;
       }
-      else if (nodeToInsert < current) {
-        if (current.left) current = current.left;
-        else {
-          current.right = nodeToInsert;
+      else if (val > current.val) {
+        if (!current.right) {
+          current.right = newNode;
           return;
         }
+        current = current.right;
       }
     }
   }
