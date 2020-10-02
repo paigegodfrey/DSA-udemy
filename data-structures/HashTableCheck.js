@@ -76,4 +76,20 @@ class HashTable {
     }
     return keys;
   }
+
+  getValues() {
+    let values = [];
+    let current;
+
+    for (let i = 0; i < this.kepMap.length; i++) {
+      if (this.keyMap[i]) {
+        current = this.keyMap[i].head;
+        while (current !== null) {
+          values.push(current.val);
+          current = current.next;
+        }
+      }
+    }
+    return values;
+  }
 }
