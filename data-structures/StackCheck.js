@@ -33,7 +33,7 @@ class Stack {
     // if this.size === 1
     if (this.top.next === null) {
       this.top = null;
-      this.tail = null;
+      this.bottom = null;
     }
 
     else this.top = nodeRemoved.next
@@ -44,6 +44,9 @@ class Stack {
   peek() {
     if (!this.top) return;
     return this.top;
+  }
 
+  isEmpty() {
+    return this.top === null;
   }
 }
