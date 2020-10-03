@@ -11,6 +11,21 @@ class BinaryTree {
   }
 
   breadthFirstSearch() {
-    
+    if (!this.root) return [];
+
+    let nodes = [];
+    let queue = [];
+    let current = this.root;
+    queue.push(current);
+
+    while (queue.length) {
+      current = queue.shift();
+      nodes.push(current);
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+
+    return nodes;
   }
+
 }

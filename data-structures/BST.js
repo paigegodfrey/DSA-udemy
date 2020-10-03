@@ -56,26 +56,6 @@ class BST {
     return false;
   }
 
-  breadthFirstSearch() {
-    if (this.root === null) return [];
-
-    let curr = this.root;
-    let data = [];
-
-    // use an array to represent the queue for simplicity
-    // time complexity for actual queue is constant => insertion & removal
-    let queue = [];
-    queue.push(curr);
-
-    while (queue.length) {
-      curr = queue.shift();
-      data.push(curr);
-      if (curr.left) queue.push(curr.left);
-      if (curr.right) queue.push(curr.right);
-    }
-    return data;
-  }
-
   // left, node, right
   inOrderTraversal(node = this.root, data = []) {
     if (node.left) this.inOrderTraversal(node.left, data);
