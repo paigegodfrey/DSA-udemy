@@ -4,3 +4,13 @@ class Node {
     this.children = [];
   }
 }
+
+class BinaryTree {
+  constructor() {
+    this.root = root;
+  }
+
+  breadthFirstSearch() {
+    
+  }
+}
