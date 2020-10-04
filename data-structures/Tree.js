@@ -1,7 +1,8 @@
 class Node {
   constructor(val) {
     this.val = val;
-    this.children = [];
+    this.left = null;
+    this.right = null;
   }
 }
 
@@ -26,6 +27,36 @@ class BinaryTree {
     }
 
     return nodes;
+  }
+
+  // DEPTH FIRST SEARCH TYPES
+  //              10
+  //          6       15
+  //        3    8       20
+
+
+  // left, node, right => [3, 6, 8, 10, 15, 20]
+  inOrderTraversal(node = this.root, data = []) {
+    if (node.left) this.inOrderTraversal(node.left, data);
+    data.push(node);
+    if (node.right) this.inOrderTraversal(node.right, data);
+    return data;
+  }
+
+  // node, left, right => [10, 6, 3, 8, 15, 20]
+  preOrderTraversal(node = this.root, data = []) {
+    data.push(node);
+    if (node.left) this.inOrderTraversal(node.left, data);
+    if (node.right) this.inOrderTraversal(node.right, data);
+    return data;
+  }
+
+  // left, right, node => [3, 8, 6, 20, 15, 10]
+  postOrderTraversal(node = this.root, data = []) {
+    if (node.left) this.inOrderTraversal(node.left, data);
+    if (node.right) this.inOrderTraversal(node.right, data);
+    data.push(node);
+    return data;
   }
 
 }

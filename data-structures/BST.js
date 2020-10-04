@@ -55,29 +55,4 @@ class BST {
     }
     return false;
   }
-
-  // left, node, right
-  inOrderTraversal(node = this.root, data = []) {
-    if (node.left) this.inOrderTraversal(node.left, data);
-    data.push(node);
-    if (node.right) this.inOrderTraversal(node.right, data);
-    return data;
-  }
-
-  // node, left, right
-  preOrderTraversal(node = this.root, data = []) {
-    data.push(node);
-    if (node.left) this.preOrderTraversal(node.left, data);
-    if (node.right) this.preOrderTraversal(node.right, data);
-    return data;
-  }
-
-  // left, right, node
-  postOrderTraversal(node = this.root, data = []) {
-    if (node.left) this.postOrderTraversal(node.left, data);
-    if (node.right) this.preOrderTraversal(node.right, data);
-    data.push(node);
-    return data;
-  }
-
 }
