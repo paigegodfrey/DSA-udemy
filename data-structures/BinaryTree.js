@@ -32,7 +32,7 @@ class BinaryTree {
   // DEPTH FIRST SEARCH TYPES
   //              10
   //          6       15
-  //        3    8       20
+  //        3   8        20
 
 
   // left, node, right => [3, 6, 8, 10, 15, 20]
