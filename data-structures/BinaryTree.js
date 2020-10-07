@@ -58,5 +58,4 @@ class BinaryTree {
     data.push(node);
     return data;
   }
-
 }
