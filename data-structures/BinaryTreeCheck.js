@@ -12,7 +12,19 @@ class BinaryTree {
   }
 
   BFS() {
+    if (!this.root) return [];
 
+    let queue = [];
+    let output = [];
+    let current = this.root;
+    queue.push(current);
+
+    while (queue.length) {
+      output.push(queue.shift());
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+    return output;
   }
 
   // DFS
@@ -20,7 +32,7 @@ class BinaryTree {
 
   }
 
-  inOrder(){
+  inOrder() {
 
   }
 
