@@ -12,6 +12,7 @@ class BST {
   }
 
   // O(log n) time
+  // O(1) space
   // always attach to the END of the tree
   // traverse through nodes by comparing val to curr.val
   insert(val) {
@@ -43,6 +44,8 @@ class BST {
     }
   }
 
+  // O(log n) time
+  // O(1) space
   // returns boolean
   find(val) {
     if (!this.root) return false;
