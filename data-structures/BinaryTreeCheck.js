@@ -28,15 +28,24 @@ class BinaryTree {
   }
 
   // DFS
-  preOrder() {
-
+  preOrder(current = this.root, nodes = []) {
+    nodes.push(current);
+    if (current.left) this.preOrder(current.left, nodes);
+    if (current.right) this.preOrder(current.right, nodes);
+    return nodes;
   }
 
-  inOrder() {
-
+  inOrder(current = this.root, nodes = []) {
+    if (current.left) this.preOrder(current.left, nodes);
+    nodes.push(current);
+    if (current.right) this.preOrder(current.right, nodes);
+    return nodes;
   }
 
-  postOrder() {
-
+  postOrder(current = this.root, nodes = []) {
+    if (current.left) this.preOrder(current.left, nodes);
+    if (current.right) this.preOrder(current.right, nodes);
+    nodes.push(current);
+    return nodes;
   }
 }
