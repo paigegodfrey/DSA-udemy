@@ -11,6 +11,8 @@ class BinaryTree {
     this.root = root;
   }
 
+  // O(n) time 
+  // O(n) space => OR O(w) space where w is max-width, if not returning nodes
   breadthFirstSearch() {
     if (!this.root) return [];
 
@@ -35,6 +37,8 @@ class BinaryTree {
   //        3   8        20
 
 
+  // O(n) time
+  // O(n) space => OR O(h) space where h is tree height, if not returning nodes
   // left, node, right => [3, 6, 8, 10, 15, 20]
   inOrderTraversal(node = this.root, data = []) {
     if (node.left) this.inOrderTraversal(node.left, data);
@@ -43,6 +47,8 @@ class BinaryTree {
     return data;
   }
 
+  // O(n) time
+  // O(n) space => OR O(h) space where h is tree height, if not returning nodes
   // node, left, right => [10, 6, 3, 8, 15, 20]
   preOrderTraversal(node = this.root, data = []) {
     data.push(node);
@@ -51,6 +57,8 @@ class BinaryTree {
     return data;
   }
 
+  // O(n) time
+  // O(n) space => OR O(h) space where h is tree height, if not returning nodes
   // left, right, node => [3, 8, 6, 20, 15, 10]
   postOrderTraversal(node = this.root, data = []) {
     if (node.left) this.inOrderTraversal(node.left, data);
