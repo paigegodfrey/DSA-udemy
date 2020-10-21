@@ -11,60 +11,60 @@ class PriorityQueue {
     this.values = [];
   }
 
+  // O(log n) time
+  // O(1) space
   enqueue(val, priority) {
-    let newNode = new Node(val, priority); 
+    let newNode = new Node(val, priority);
     this.values.push(newNode);
-    this.bubbleUp();
-  }
 
-  bubbleUp() {
-    let idx = this.values.length - 1;
+    let currentIdx = this.values.length - 1;
+    let current;
+    let parentIdx;
+    let parent;
 
-    while (idx > 0) {
-      let element = this.values[idx];
-      let parentIdx = Math.floor((idx - 1) / 2);
-      let parent = this.values[parentIdx];
+    while (currentIdx > 0) {
+      current = this.values[currentIdx];
+      parentIdx = Math.floor((currentIdx - 1) / 2);
+      parent = this.values[parentIdx];
 
-      if (element.priority >= parent.priority) break;
+      if (current.priority >= parent.priority) return;
 
       // else if parent.priority < element.priority
-      this.values[idx] = parent;
-      this.values[parentIdx] = element;
-      idx = parentIdx;
+      [this.values[currentIdx], this.values[parentIdx]] = [this.values[parentIdx], this.values[currentIdx]];
+      currentIdx = parentIdx;
     }
   }
 
-  // remove highest priority
+  // O(log n) time
+  // O(h) space where h is the height of the BinaryHeap
+  // remove "highest" priority => lowest priority number (e.g. 1)
   dequeue() {
     if (!this.values.length) return;
     if (this.values.length === 1) return this.values.pop();
 
     let highestPriority = this.values[0];
+    // reassign most recently added value as root
     this.values[0] = this.values.pop();
     this.sinkDown(0);
     return highestPriority;
   }
 
-  sinkDown(idx) {
-    let leftIdx = 2 * idx + 1;
-    let rightIdx = 2 * idx + 2;
-    let parentIdx = idx;
-    let length = this.values.length;
+  sinkDown(parentIdx) {
+    let leftIdx = 2 * parentIdx + 1;
+    let rightIdx = 2 * parentIdx + 2;
+    let topPriorityIdx = parentIdx;
 
     // if left child priority is higher (lower number) than parent priority
-    if (leftIdx < length && this.heap[leftIdx].priority < this.heap[parentIdx].priority) {
-      parentIdx = leftIdx
-    }
-    // if right child priority is higher(lower number) than parent priority
-    // parent is now updated to reflect highest priority of left and original parent
-    if (rightIdx < length && this.heap[rightIdx].priority < this.heap[parentIdx].priority) {
-      parentIdx = rightIdx
-    }
+    if (this.values[leftIdx].priority < this.values[topPriorityIdx].priority) topPriorityIdx = leftIdx;
+
+    // if right child priority is higher (lower number) than "parent" priority
+    // topPriorityIdx now reflects highest priority of left and original parent
+    if (this.values[rightIdx].priority < this.values[topPriorityIdx].priority) topPriorityIdx = rightIdx;
 
     // swap values if necessary
-    if (parentIdx !== idx) {
-      [this.values[parentIdx], this.values[idx]] = [this.values[idx], this.values[parentIdx]]
-      this.sinkDown(parentIdx);
+    if (topPriorityIdx !== parentIdx) {
+      [this.values[topPriorityIdx], this.values[parentIdx]] = [this.values[parentIdx], this.values[topPriorityIdx]];
+      this.sinkDown(topPriorityIdx);
     }
   }
 }
