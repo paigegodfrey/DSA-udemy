@@ -3,28 +3,23 @@ class MaxBinaryHeap {
     this.values = [];
   }
 
-  bubbleUp() {
-    let currentIdx = this.values.length - 1;
-
-    while (currentIdx > 0) {
-      let current = this.values[currentIdx];
-      let parentIdx = Math.floor((currentIdx - 1) / 2);
-      let parent = this.values[parentIdx];
-
-      if (current <= parent) return;
-
-      // else if (parent > current)
-      this.values[currentIdx] = parent;
-      this.values[parentIdx] = current;
-      idx = parentIdx;
-    }
-  }
-
-  // O(log n) time
-  // O(1) space
   insert(val) {
     this.values.push(val);
-    this.bubbleUp();
+
+    let currentIdx = this.values.length - 1;
+    let parentIdx;
+    let parent;
+
+    while (currentIdx > 0) {
+      parentIdx = Math.floor((currentIdx - 1) / 2);
+      parent = this.values[parentIdx];
+
+      if (val <= parent) return;
+      
+      // else if (val > parent)
+      [this.values[currentIdx], this.values[parentIdx]] = [this.values[parentIdx], this.values[currentIdx]];
+      currentIdx = parentIdx;
+    }
   }
 
   sinkDown(idx) {
