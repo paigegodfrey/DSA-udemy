@@ -3,11 +3,6 @@ class MaxBinaryHeap {
     this.values = [];
   }
 
-  insert(val) {
-    this.values.push(val);
-    this.bubbleUp();
-  }
-
   bubbleUp() {
     let idx = this.values.length - 1;
 
@@ -25,14 +20,9 @@ class MaxBinaryHeap {
     }
   }
 
-  extractMax() {
-    if (!this.values.length) return;
-    if (this.values.length === 1) return this.values.pop();
-
-    let max = this.values[0];
-    this.values[0] = this.values.pop();
-    this.sinkDown(0);
-    return max;
+  insert(val) {
+    this.values.push(val);
+    this.bubbleUp();
   }
 
   sinkDown(idx) {
@@ -55,5 +45,15 @@ class MaxBinaryHeap {
       [this.values[parentIdx], this.values[idx]] = [this.values[idx], this.values[parentIdx]]
       this.sinkDown(parentIdx);
     }
+  }
+
+  extractMax() {
+    if (!this.values.length) return;
+    if (this.values.length === 1) return this.values.pop();
+
+    let max = this.values[0];
+    this.values[0] = this.values.pop();
+    this.sinkDown(0);
+    return max;
   }
 }
