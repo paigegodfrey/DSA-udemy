@@ -4,22 +4,24 @@ class MaxBinaryHeap {
   }
 
   bubbleUp() {
-    let idx = this.values.length - 1;
+    let currentIdx = this.values.length - 1;
 
-    while (idx > 0) {
-      let element = this.values[idx];
-      let parentIdx = Math.floor((idx - 1) / 2);
+    while (currentIdx > 0) {
+      let current = this.values[currentIdx];
+      let parentIdx = Math.floor((currentIdx - 1) / 2);
       let parent = this.values[parentIdx];
 
-      if (element <= parent) break;
+      if (current <= parent) return;
 
-      // else if parent > element
-      this.values[idx] = parent;
-      this.values[parentIdx] = element;
+      // else if (parent > current)
+      this.values[currentIdx] = parent;
+      this.values[parentIdx] = current;
       idx = parentIdx;
     }
   }
 
+  // O(log n) time
+  // O(1) space
   insert(val) {
     this.values.push(val);
     this.bubbleUp();
