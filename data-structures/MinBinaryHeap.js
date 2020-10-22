@@ -3,6 +3,8 @@ class MinBinaryHeap {
     this.values = [];
   }
 
+  // O(log n) time
+  // O(1) space
   insert(val) {
     this.values.push(val);
 
@@ -20,6 +22,18 @@ class MinBinaryHeap {
     }
   }
 
+  // O(log n) time
+  // O(h) space where h is the height of the BinaryHeap
+  extractMin() {
+    if (!this.values.length) return;
+    if (this.values.length === 1) return this.values.pop();
+
+    let min = this.values[0];
+    this.values[0] = this.values.pop();
+    this.sinkDown(0);
+    return min;
+  }
+
   sinkDown(parentIdx) {
     let leftIdx = 2 * parentIdx + 1;
     let rightIdx = 2 * parentIdx + 2;
@@ -31,12 +45,5 @@ class MinBinaryHeap {
       [this.values[minIdx], this.values[parentIdx]] = [this.values[parentIdx], this.values[minIdx]];
       this.sinkDown(minIdx);
     }
-  }
-
-  extractMin() {
-    let min = this.values[0];
-    this.values[0] = this.values.pop();
-    sinkDown(0);
-    return min;
   }
 }
