@@ -1,7 +1,7 @@
 class Node {
   constructor() {
     this.children = {};
-    this.isEndOfWord = false;
+    this.wordComplete = false;
   }
 }
 
@@ -19,7 +19,7 @@ class Trie {
       }
       curr = curr.children[letter];
     }
-    curr.isEndOfWord = true;
+    curr.wordComplete = true;
     return;
   }
 
@@ -29,7 +29,7 @@ class Trie {
       if (!curr.children[letter]) return false;
       curr = curr.children[letter];
     }
-    return curr.isEndOfWord;
+    return curr.wordComplete;
   }
 
   startsWith(prefix) {
