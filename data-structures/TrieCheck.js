@@ -39,7 +39,8 @@ class Trie {
     let current = this.root;
     for (let letter of prefix) {
       if (!current.children[letter]) return false;
+      current = current.children[letter];
     }
-    return current.children ? true : false;
+    return true;
   }
 }
