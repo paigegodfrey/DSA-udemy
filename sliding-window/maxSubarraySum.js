@@ -3,7 +3,6 @@ function maxSubarraySum(arr, n) {
 
   let maxSum = 0;
   let sum = 0;
-  let i = 0;
 
   for(let i = 0; i < n; i++) {
     sum += arr[i];
