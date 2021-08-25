@@ -33,13 +33,13 @@ const longestSubstring = str => {
   let set = new Set();
 
   while (right < str.length) {
-    if (!set.has(str[right])) {
+    if (set.has(str[right])) {
+      set.delete(str[left]);
+      left++;
+    } else {
       set.add(str[right]);
       maxCount = Math.max(maxCount, right - left + 1);
       right++;
-    } else {
-      set.delete(str[left]);
-      left++;
     }
   }
   return maxCount
