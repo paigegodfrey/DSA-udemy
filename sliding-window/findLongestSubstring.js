@@ -30,17 +30,16 @@ const longestSubstring = str => {
   let maxCount = 0;
   let left = 0;
   let right = 0;
-  let set = new Set();
+  let frequency = {};
 
   while (right < str.length) {
-    if (set.has(str[right])) {
-      set.delete(str[left]);
+    while (str[right] in frequency) {
+      delete(frequency[str[left]]);
       left++;
-    } else {
-      set.add(str[right]);
-      maxCount = Math.max(maxCount, right - left + 1);
-      right++;
     }
+    frequency[str[right]] = right;
+    maxCount = Math.max(maxCount, right - left + 1);
+    right++;
   }
   return maxCount
 }
