@@ -41,7 +41,7 @@ const longestSubstring = str => {
     maxCount = Math.max(maxCount, right - left + 1);
     right++;
   }
-  return maxCount
+  return maxCount;
 }
 
 console.log(longestSubstring('')) // 0
